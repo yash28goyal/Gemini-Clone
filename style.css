@@ -1,0 +1,66 @@
+/* Chat Functionality: Interact with the Gemini chatbot.
+Copy Responses: Easily copy chatbot replies.
+Theme Toggle: Switch between light and dark modes.
+Local Storage: Saves themes and chat history persistently.
+Google Gemini API: Uses free API to generate responses.
+Typing Effect: Responses appear with a typing animation.
+Loading Animation: Engaging animation before responses.
+Responsive Design: Adapts to various screen sizes and devices.
+Easy Customization: Simple to integrate and customize.
+Clean Code: Well-structured and commented code. */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --text-color : #e3e3e3;
+    --subheading-color : #828282;
+    --placeholder-color : #a6a6a6;
+    --primary-color : #242424;
+    --secondary-color : #383838;
+    --secondary-hover-color : #444444; 
+}
+
+body {
+    background: var(--primary-color);
+}
+
+.header, .search-menu {
+    color: var(--text-color);
+}
+
+.header, .chat-list .chat, .search-form {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-top: 7vh;
+    padding: 1rem;
+    /* display: none; */
+}
+
+.header :where(.title, .subTitle) {
+    font-weight: 500;
+    line-height: 3.5rem;
+}
+
+.header .title {
+    font-size: 2.7rem;
+    width: fit-content;
+    background-clip: text;
+    background: linear-gradient(to right, #4285f4, #d96570);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header .subTitle {
+    font-size: 2.4rem;
+    color: var(--subheading-color);
+}
