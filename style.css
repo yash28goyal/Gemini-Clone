@@ -27,6 +27,15 @@ Clean Code: Well-structured and commented code. */
     --secondary-hover-color : #444444; 
 }
 
+.lightMode {
+    --text-color : #222;
+    --subheading-color : #a0a0a0;
+    --placeholder-color : #6c6c6c;
+    --primary-color : #fff;
+    --secondary-color : #e9eef6;
+    --secondary-hover-color : #dbe1ea; 
+}
+
 body {
     background: var(--primary-color);
 }
@@ -105,4 +114,74 @@ body {
     justify-content: center;
     border-radius: 50%;
     background: var(--primary-color);
+}
+
+.search-menu {
+    position: fixed;
+    background: var(--primary-color);
+    z-index: 100;
+    width: 100%;
+    bottom: 0;
+}
+
+.search-menu :where(.search-form, .btns) {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.search-menu .inputWrapper {
+    height: 56px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.search-menu .typeInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 6.2rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 1.1rem 4rem 1.1rem 1.5rem;
+    background: var(--secondary-color);
+}
+
+.search-menu .typeInput:focus {
+    color: var(--text-color);
+}
+
+.search-menu .typeInput::placeholder {
+    color: var(--placeholder-color);
+}
+
+.search-menu .icon {
+    height: 56px;
+    width: 56px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    outline: none;
+    border: none;
+}
+
+.search-menu .icon:hover {
+    background: var(--secondary-hover-color) !important;
+}
+
+.search-menu .inputWrapper .icon {
+    position: absolute;
+    right: 0;
+    background: none;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.search-menu .inputWrapper .typeInput:valid ~  .icon {
+    transform: scale(1);
 }
