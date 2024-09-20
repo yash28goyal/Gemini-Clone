@@ -39,16 +39,19 @@ body {
 }
 
 .header .right p {
+    cursor: pointer;
     font-size: 0.9rem;
     font-weight: 500;
 }
 
+.header .right span {
+    cursor: pointer;
+}
+
 .main {
-    /* padding-top: 5rem; */
     width: 100vw;
     display: grid;
     grid-template-columns: auto auto;
-    overflow-y: scroll;
 }
 
 .left_main {
@@ -87,6 +90,7 @@ body {
 }
 
 .left_main button {
+    cursor: pointer;
     margin-top: 1.75rem;
     margin-left: 0.5rem;
     padding: 0.5rem 1rem;
@@ -104,11 +108,12 @@ body {
 }
 
 .right_main {
+    width: 40%;
     padding-inline: 5rem;
 }
 
 .right_main img {
-    width: 80%;
+    margin-top: 5rem;
 }
 
 .footer {
@@ -123,14 +128,24 @@ body {
     padding-inline: 1.5rem;
     gap: 1rem;
 }
-
-.footer h3 {
+.footer h3 ,
+.footer h3 a{
+    text-decoration: none;
+    color: inherit;
     font-size: 1.25rem;
     font-weight: 550;
+    cursor: pointer;
 }
 
 .footer p {
+    cursor: pointer;
     font-size: 0.85rem;
+}
+
+@media screen and (max-width:1025px) {
+    .left_main {
+        padding-left: 5rem;
+    }
 }
 
 @media screen and (max-width : 769px) {
@@ -138,8 +153,18 @@ body {
         grid-template-columns: auto;
     }
     .left_main {
-        padding-top: 10rem;
+        padding-top: 4rem;
         padding-inline: 4rem;
-        /* order: 2; */
+        order: 2;
+    }
+}
+
+@media (min-width : 376px) and (max-width : 769px) {
+    .left_main {
+        padding-top: 10rem;
+    }
+
+    .right_main {
+        display: none;
     }
 }
