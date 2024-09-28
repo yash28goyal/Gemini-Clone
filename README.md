@@ -1,5 +1,5 @@
 <h1>Gemini Clone</h1>
- <span><img src="image2.jpg"></span>  <span><img src="image3.jpg"></span>
+ <span><img src="/imagesReadme/image2.jpg"></span>  <span><img src="/imagesReadme/image3.jpg"></span>
     <p>A simple and elegant clone of the Gemini protocol for browsing the Gemini space.</p>
 
   <h2>Table of Contents</h2>
