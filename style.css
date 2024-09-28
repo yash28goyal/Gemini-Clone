@@ -1,14 +1,3 @@
-/* Chat Functionality: Interact with the Gemini chatbot.
-Copy Responses: Easily copy chatbot replies.
-Theme Toggle: Switch between light and dark modes.
-Local Storage: Saves themes and chat history persistently.
-Google Gemini API: Uses free API to generate responses.
-Typing Effect: Responses appear with a typing animation.
-Loading Animation: Engaging animation before responses.
-Responsive Design: Adapts to various screen sizes and devices.
-Easy Customization: Simple to integrate and customize.
-Clean Code: Well-structured and commented code. */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600&display=swap');
 
 * {
@@ -18,50 +7,66 @@ Clean Code: Well-structured and commented code. */
     font-family: "Poppins", sans-serif;
 }
 
-:root {
-    --text-color : #e3e3e3;
-    --subheading-color : #828282;
-    --placeholder-color : #a6a6a6;
-    --primary-color : #242424;
-    --secondary-color : #383838;
-    --secondary-hover-color : #444444; 
-}
-
-.lightMode {
-    --text-color : #222;
-    --subheading-color : #a0a0a0;
-    --placeholder-color : #6c6c6c;
-    --primary-color : #fff;
-    --secondary-color : #e9eef6;
-    --secondary-hover-color : #dbe1ea; 
-}
-
 body {
-    background: var(--primary-color);
-}
-
-.header, .search-menu {
-    color: var(--text-color);
-}
-
-.header, .chat-list .chat, .search-form {
-    max-width: 1000px;
-    margin: 0 auto;
+    width: 100%;
+    height: 100%;
 }
 
 .header {
-    margin-top: 7vh;
-    padding: 1rem;
-    /* display: none; */
+    position: fixed;
+    background: white;
+    z-index: 100;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1rem;
 }
 
-.header :where(.title, .subTitle) {
+.header .left h3 a{
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    font-size: 1.25rem;
+}
+
+.header .right {
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.header .right p {
+    cursor: pointer;
+    font-size: 0.9rem;
     font-weight: 500;
-    line-height: 3.5rem;
 }
 
-.header .title {
-    font-size: 2.7rem;
+.header .right span {
+    cursor: pointer;
+}
+
+.main {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.left_main {
+    padding-top: 8rem;
+    padding-left: 10rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
+
+.left_main h1 {
+    font-size: 7rem;
+    font-weight: 400;
+    line-height: 1;
     width: fit-content;
     background-clip: text;
     background: linear-gradient(to right, #4285f4, #d96570);
@@ -69,229 +74,97 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-.header .subTitle {
-    font-size: 2.4rem;
-    color: var(--subheading-color);
+.left_main p.upper {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    line-height: 1;
 }
 
-.suggest {
-    margin-top: 9.5vh;
-    list-style: none;
-    display: flex;
-    gap: 1.25rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-
-.suggest .suggestions {
-    padding: 1.25rem;
-    cursor: pointer;
-    width: 225px;
-    flex-shrink: 0;
-    border-radius: 0.75rem;
-    background: var(--secondary-color);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-}
-
-.suggest .suggestions:hover {
-    background: var(--secondary-hover-color);
-}
-
-.suggest .suggestions .text {
-    font-weight: 400;
-}
-
-.suggest .suggestions .icon {
-    height: 42px;
-    width: 42px;
-    font-size: 1.3rem;
-    margin-top: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--primary-color);
-}
-
-.search-menu {
-    position: fixed;
-    background: var(--primary-color);
-    z-index: 100;
-    width: 100%;
-    bottom: 0;
-}
-
-.search-menu :where(.search-form, .btns) {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.search-menu .inputWrapper {
-    height: 56px;
-    width: 100%;
-    display: flex;
-    position: relative;
-}
-
-.search-menu .typeInput {
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    border-radius: 6.2rem;
+.left_main p.lower {
+    line-height: 1.25;
     font-size: 1rem;
-    color: var(--text-color);
-    padding: 1.1rem 4rem 1.1rem 1.5rem;
-    background: var(--secondary-color);
+    font-weight: 500;
+    margin-left: 0.5rem;
+    margin-top: 1.25rem;
 }
 
-.search-menu .typeInput:focus {
-    color: var(--text-color);
-}
-
-.search-menu .typeInput::placeholder {
-    color: var(--placeholder-color);
-}
-
-.search-menu .icon {
-    height: 56px;
-    width: 56px;
+.left_main button {
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    outline: none;
+    margin-top: 1.75rem;
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #1B73E8;
+    font-size: 1.05rem;
+    color: white;
+    border-radius: 500px;
     border: none;
+    transition: box-shadow 0.5s ease;
+    width: 250px;
 }
 
-.search-menu .icon:hover {
-    background: var(--secondary-hover-color) !important;
+.left_main button:hover {
+    box-shadow: 0px 1px #242424;
 }
 
-.search-menu .inputWrapper .icon {
-    position: absolute;
-    right: 0;
-    background: none;
-    transform: scale(0);
-    transition: transform 0.2s ease;
+.right_main {
+    width: 40%;
+    padding-inline: 5rem;
 }
 
-.search-menu .inputWrapper .typeInput:valid ~  .icon {
-    transform: scale(1);
+.right_main img {
+    margin-top: 5rem;
 }
 
-.footerText {
-    font-size: 0.8rem;
-    margin-top: 1rem;
-    margin-bottom: 0.25rem;
-    text-align: center;
-    color: var(--placeholder-color);
-}
-
-/*Chat Styling*/
-.chat-list {
-    padding: 2rem 1rem 12rem;
-    max-height: 100vh;
-}
-
-.chat-list .chat.incoming {
-    margin-top: 1.5rem;
-}
-
-.chat-list .chat .chat-content {
-    display: flex;
-    gap: 1.5rem;
+.footer {
+    position: fixed;
+    bottom: 0;
+    background: #F8F9FA;
+    height: 12%;
     width: 100%;
+    color: #5B5C5C;
+    display: flex;
     align-items: center;
+    padding-inline: 1.5rem;
+    gap: 1rem;
 }
-
-.chat-list .chat .avatar {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    align-self: flex-start;
-}
-
-.chat-list .chat.loading-message .avatar {
-    animation: rotate 3s linear infinite;
-}
-
-@keyframes rotate {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.chat-list .chat .text {
-    color: var(--text-color);
-}
-
-.chat-list .chat.loading-message .text {
-    display: none;
-}
-
-.chat-list .chat .icon {
+.footer h3 ,
+.footer h3 a{
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.25rem;
+    font-weight: 550;
     cursor: pointer;
-    font-size: 1.2rem;
-    height: 35px;
-    width: 35px;
-    margin-left: 3.8rem;
-    background: var(--secondary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-color);
-    border-radius: 50%;
-    visibility: hidden;
 }
 
-.chat-list .chat:not(.chat.loading-message):hover .icon {
-    visibility: visible;
+.footer p {
+    cursor: pointer;
+    font-size: 0.85rem;
 }
 
-.chat-list .chat .icon:hover  {
-    background: var(--secondary-hover-color);
-}
-
-.chat-list .loading {
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    gap: 0.7rem;
-}
-
-.chat-list .chat.loading-message .loading {
-    display: flex;
-}
-
-.chat-list .loading .load-bar {
-    width: 100%;
-    height: 11px;
-    border-radius: 0.14rem;
-    background: linear-gradient(to right, #4285f4, var(--primary-color), #4285f4);
-    animation: animate 3s linear infinite;
-}
-
-.chat-list .loading .load-bar:nth-child(2) {
-    width: 80%;
-}
-
-.chat-list .loading .load-bar:last-child {
-    width: 60%;
-}
-
-@keyframes animate {
-    0% {
-        background-position: -800px 0;
+@media screen and (max-width:1025px) {
+    .left_main {
+        padding-left: 5rem;
     }
-    100% {
-        background-position: 800px 0;
+}
+
+@media screen and (max-width : 769px) {
+    .main {
+        grid-template-columns: auto;
+    }
+    .left_main {
+        padding-top: 4rem;
+        padding-inline: 4rem;
+        order: 2;
+    }
+}
+
+@media (min-width : 376px) and (max-width : 769px) {
+    .left_main {
+        padding-top: 10rem;
+    }
+
+    .right_main {
+        display: none;
     }
 }
